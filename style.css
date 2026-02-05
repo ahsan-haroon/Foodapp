@@ -1,0 +1,253 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration: none;
+}
+
+body{
+    background: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+/* HEADER */
+header{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* STARS */
+#stars{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.star{
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+    0%{ opacity: .3; }
+    50%{ opacity: 1; }
+    100%{ opacity: .3; }
+}
+
+/* NAVBAR */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.logo{
+    width: 60px;
+}
+
+.center-nav a{
+    color: white;
+    margin: 0 15px;
+    font-size: 18px;
+    position: relative;
+}
+
+.center-nav a::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: orange;
+    bottom: -5px;
+    transform: scaleX(0);
+    transition: .3s;
+}
+
+.center-nav a:hover::before{
+    transform: scaleX(1);
+}
+
+.social i{
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* TEXT */
+.text{
+    max-width: 600px;
+    margin: 100px 60px;
+    position: relative;
+    z-index: 5;
+}
+
+.text h1{
+    font-size: 4.5rem;
+    line-height: 1.1;
+}
+
+.text p{
+    margin-top: 20px;
+    color: #ccc;
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 30px;
+    margin-right: 10px;
+    padding: 12px 30px;
+    border: 2px solid white;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    transition: .3s;
+}
+
+.btn:hover{
+    background: orange;
+    border-color: orange;
+    color: black;
+}
+
+/* MAIN BURGER */
+.burger-toggle{
+    position: absolute;
+    right: 8%;
+    top: 20%;
+    z-index: 5;
+}
+
+.burger-toggle img{
+    width: 450px;
+    filter: drop-shadow(0 40px 100px rgba(255,140,0,.5));
+    transition: transform .3s ease, opacity .3s ease;
+}
+
+/* Animation class for JS */
+.burger-toggle img.change{
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+/* SMALL BURGERS THUMBNAILS */
+.burger{
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+.burger img{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.burger img:hover{
+    transform: translateY(-10px);
+    border-color: orange;
+}
+
+/* --- EXISTING CSS KE NEECHE YE ADD KAREIN --- */
+
+/* Tablets ke liye (Max 992px) */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 20px 30px;
+    }
+    .text h1 {
+        font-size: 3rem;
+    }
+    .burger-toggle img {
+        width: 350px;
+    }
+}
+
+/* Mobile Phones ke liye (Max 768px) */
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 120px; /* Thumbnails ke liye jagah */
+    }
+
+    .navbar {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    .center-nav {
+        display: none; /* Mobile par menu chupa diya, aap hamburger icon add kar sakte hain */
+    }
+
+    .text {
+        margin: 50px 20px;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .text h1 {
+        font-size: 2.5rem;
+    }
+
+    .burger-toggle {
+        position: relative; /* Absolute se hatakar center mein lane ke liye */
+        right: auto;
+        top: auto;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .burger-toggle img {
+        width: 280px; /* Mobile par burger chota */
+    }
+
+    .burger {
+        width: 90%;
+        gap: 10px;
+        bottom: 20px;
+    }
+
+    .burger img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Bohat chote phones ke liye (Max 480px) */
+@media (max-width: 480px) {
+    .text h1 {
+        font-size: 2rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    .burger img {
+        width: 50px;
+        height: 50px;
+    }
+}
